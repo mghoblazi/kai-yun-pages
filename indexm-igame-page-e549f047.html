@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>关于「爱游戏」—— 一段简单的回望</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7fbfc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', sans-serif;
+            color: #1b2b2f;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 开场短句 — 轻叙事 */
+        .opening {
+            margin: 1.8rem 0 2rem 0;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+            color: #266a73;
+            border-left: 4px solid #4ca0ab;
+            padding-left: 1.2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .opening span {
+            display: inline-block;
+            background: #e0f0f2;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 450;
+            color: #17565e;
+        }
+
+        /* 承接段落 */
+        .bridge {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            padding: 1.6rem 1.8rem;
+            border-radius: 28px 12px 28px 12px;
+            box-shadow: 0 6px 16px rgba(62, 128, 138, 0.06);
+            margin: 2.2rem 0 2.6rem 0;
+            border: 1px solid #d2e7ea;
+        }
+
+        .bridge p {
+            margin-bottom: 1.1rem;
+            color: #1d3a3f;
+        }
+
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridge a {
+            color: #1c7a87;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px dotted #7bbfc9;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .bridge a:hover {
+            border-bottom-style: solid;
+            border-color: #15626e;
+            background-color: #deeff2;
+        }
+
+        /* 特点列表 —— 网格卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2.8rem 0;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.2rem 1.2rem 1.2rem;
+            box-shadow: 0 4px 10px rgba(72, 148, 158, 0.06);
+            border: 1px solid #dcf0f3;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(48, 119, 128, 0.08);
+            border-color: #aed2d9;
+        }
+
+        .feature-card .emoji-badge {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            background: #e0f2f5;
+            width: 2.4rem;
+            height: 2.4rem;
+            line-height: 2.4rem;
+            text-align: center;
+            border-radius: 40%;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0.5rem 0 0.4rem 0;
+            color: #175e68;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #2d4f55;
+            line-height: 1.6;
+        }
+
+        /* 场景小记 —— 温和过渡 */
+        .scene-note {
+            background: #e6f3f5;
+            padding: 1.8rem 1.8rem;
+            border-radius: 40px 8px 40px 8px;
+            margin: 2rem 0 2.6rem 0;
+            border: 1px solid #c2dde2;
+        }
+
+        .scene-note h2 {
+            font-size: 1.2rem;
+            font-weight: 450;
+            color: #165f69;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scene-note p {
+            margin-bottom: 0.8rem;
+            color: #1d4249;
+        }
+
+        .scene-note p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .scene-note code {
+            background: #d1e9ed;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #12515b;
+        }
+
+        /* FAQ 摘要 —— 克制简问 */
+        .faq-mini {
+            margin: 2rem 0 2.4rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #d2e7ea;
+            padding: 1rem 0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid #d2e7ea;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #175e68;
+            display: flex;
+            gap: 0.6rem;
+            align-items: baseline;
+        }
+
+        .faq-q::before {
+            content: "Q";
+            font-size: 0.8rem;
+            background: #b6d7dd;
+            color: #144e57;
+            font-weight: 600;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30%;
+        }
+
+        .faq-a {
+            margin-top: 0.3rem;
+            margin-left: 2.1rem;
+            color: #2b555d;
+            font-size: 0.95rem;
+        }
+
+        /* 温和结尾 */
+        .gentle-end {
+            margin: 3rem 0 2rem;
+            padding: 1.4rem 1.8rem;
+            background: #f0f9fb;
+            border-radius: 60px 12px 60px 12px;
+            border: 1px solid #b8d7dd;
+            text-align: center;
+            color: #15555f;
+        }
+
+        .gentle-end p {
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .gentle-end .small-note {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #39717b;
+            opacity: 0.8;
+        }
+
+        hr {
+            border: none;
+            border-top: 1.5px solid #cde3e7;
+            margin: 2.2rem 0 0.8rem 0;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 540px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .bridge {
+                padding: 1.3rem;
+                border-radius: 24px 8px 24px 8px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .opening {
+                font-size: 1.1rem;
+                padding-left: 1rem;
+            }
+            .scene-note {
+                padding: 1.4rem;
+            }
+            .faq-a {
+                margin-left: 1.6rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .feature-card h3 {
+                font-size: 1rem;
+            }
+            .gentle-end {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 开场短句：有温度的起始 -->
+        <div class="opening">
+            有些事物不需要隆重的开场，<br>
+            只需要一个安静的入口。<span>爱游戏</span> 便是如此。
+        </div>
+
+        <!-- 承接段落：从稳定入口与页面说明切入 -->
+        <div class="bridge">
+            <p>
+                很多年过去，我们依然会被一个清晰的页面所打动。不需要弹窗催促，没有冗余的装饰——打开
+                <a href="https://indexm-igame.com">爱游戏</a>，
+                首先感受到的是克制的留白和干净的导航。它不像一个产品，更像一个老朋友递来的卡片。
+            </p>
+            <p>
+                如果你也习惯了在碎片时间里寻找一点属于自己的节奏，或许这个页面会成为你书签栏里安静的存在。
+                这里没有复杂的注册流程，也没有打扰式的推送，有的只是对内容本身的专注。
+            </p>
+        </div>
+
+        <!-- 特点列表 + 网格卡片 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="emoji-badge">📋</div>
+                <h3>叙述式目录</h3>
+                <p>每个分类都像一段短故事，不靠醒目标题抓眼球，而是用平实的语言引导你找到想看的。</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji-badge">🎨</div>
+                <h3>蓝绿底调</h3>
+                <p>主色选用了低饱和的蓝绿与暖白，长时间浏览也不觉得刺眼，卡片边缘柔和，层次自然。</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji-badge">📱</div>
+                <h3>移动优先</h3>
+                <p>无论手机还是平板，页面布局会自适应，字体和间距都针对小屏重新梳理过。</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji-badge">🔖</div>
+                <h3>稳定入口</h3>
+                <p>链接结构简洁，没有多余的跳转链。你可以随时回来，页面状态始终一致。</p>
+            </div>
+        </div>
+
+        <!-- 场景小记（代替常规介绍） -->
+        <div class="scene-note">
+            <h2>🌿 某个下午的场景</h2>
+            <p>
+                打开笔记本，泡一杯温度刚好的茶。浏览器默认主页就是 <a href="https://indexm-igame.com" style="color:#166a77; text-decoration: underline wavy #8fcbd3 1px; text-underline-offset:4px;">爱游戏</a>。
+                不需要思考“今天要看什么”，页面已经为你铺好了几个安静的入口。
+            </p>
+            <p>
+                有时候只是扫一眼标题，有时候会点进一个分类，读一段介绍，然后心满意足地关上。
+                没有“必须看完”的压力，也没有算法拼命挽留你的痕迹。
+            </p>
+            <p style="font-size:0.9rem; opacity:0.7;">
+                <code>indexm-igame.com</code> 就像是一个不说话的观测者，等你准备好了，它就在那里。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要——但不是常规faq，更像轻问答 -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="faq-q">这个页面适合谁？</div>
+                <div class="faq-a">喜欢安静浏览、不想被过度运营打扰的人。也适合那些希望一个入口用很久的访客。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">需要注册或登录吗？</div>
+                <div class="faq-a">不需要。直接打开 <a href="https://indexm-igame.com" style="color:#166a77; font-weight:500;">爱游戏</a> 就可以浏览，没有账户体系。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">内容会频繁更新吗？</div>
+                <div class="faq-a">更新节奏平缓，不会每天轰炸式推送。更像一本不定期出刊的独立杂志。</div>
+            </div>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="gentle-end">
+            <p>
+                如果你也认同“少即是多”，不妨把 <a href="https://indexm-igame.com" style="color:#115963; text-decoration: none; border-bottom: 1.5px solid #5199a5;">爱游戏</a> 
+                放在一个不起眼的位置。<br>
+                它不会喧哗，但你知道它一直在。
+            </p>
+            <span class="small-note">—— 一段关于稳定与克制的记录</span>
+        </div>
+
+        <hr>
+        <p style="text-align: center; font-size: 0.75rem; color: #5e8d95; margin: 1.2rem 0 0.5rem 0; letter-spacing: 0.5px;">
+            <span style="opacity:0.6;">入口本身，就是最好的说明。</span>
+        </p>
+
+    </div>
+</body>
+</html>
