@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 沉浸于数字乐趣</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            color: #2c3e4f;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 820px;
+            width: 100%;
+        }
+
+        /* 文章卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e7ebef;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 20, 30, 0.03);
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 20, 30, 0.04);
+        }
+
+        /* 文章标题 */
+        .post-title {
+            font-size: 2.1rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #1e2a36;
+            line-height: 1.3;
+            margin-bottom: 0.6rem;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #788a9a;
+            font-size: 0.9rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px dashed #e2e7ed;
+            padding-bottom: 1rem;
+        }
+
+        .post-meta span {
+            background: #eef2f6;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #4a5e70;
+        }
+
+        /* 导语 */
+        .lead {
+            font-size: 1.1rem;
+            background: #f7f9fb;
+            padding: 1.2rem 1.4rem;
+            border-radius: 14px;
+            border-left: 4px solid #a2b9ce;
+            margin-bottom: 1.8rem;
+            color: #2b4054;
+        }
+
+        .lead strong {
+            font-weight: 500;
+        }
+
+        /* 段落 */
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        /* 引用/提示块 */
+        .insight {
+            background: #f1f5fa;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border: 1px solid #dbe2ea;
+            position: relative;
+        }
+
+        .insight::before {
+            content: "💡";
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .insight p {
+            margin-bottom: 0.2rem;
+            display: inline;
+        }
+
+        .visit-sentence {
+            background: #eef3f9;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0 0.5rem 0;
+            font-size: 1rem;
+            border: 1px solid #d4dee8;
+            text-align: center;
+            color: #1f3345;
+        }
+
+        .visit-sentence a {
+            color: #1f5b7a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b3cbd9;
+            transition: border 0.2s;
+        }
+
+        .visit-sentence a:hover {
+            border-bottom: 1px solid #1f5b7a;
+        }
+
+        /* 特色小卡片（网格） */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.8rem 0;
+        }
+
+        .feature-item {
+            background: #fafcfe;
+            border-radius: 16px;
+            border: 1px solid #e5eaef;
+            padding: 1.2rem 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 560;
+            margin-bottom: 0.3rem;
+            color: #1d3448;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #4a6177;
+            margin-bottom: 0;
+        }
+
+        /* 摘要FAQ （折叠感） */
+        .faq-mini {
+            margin-top: 1.6rem;
+            border-top: 1px solid #e3e9ef;
+            padding-top: 1.2rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 0.6rem 1rem;
+            border: 1px solid #e2e8ef;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1d3448;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini details p {
+            margin: 0.6rem 0 0.2rem 0;
+            font-size: 0.95rem;
+            color: #3a536a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 580px) {
+            body {
+                padding: 1.5rem 0.9rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+            .post-title {
+                font-size: 1.7rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .lead {
+                font-size: 1rem;
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dee5ec;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #778b9c;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 主文章卡片 -->
+        <article class="card">
+            <h1 class="post-title">在数字世界里，重新发现游戏的温度</h1>
+            <div class="post-meta">
+                <span>随感 · 体验</span>
+                <span>爱游戏</span>
+                <span>2025·春</span>
+            </div>
+
+            <div class="lead">
+                <strong>游戏</strong> 从来不只是像素与规则的堆砌。它是一种充满可能的对话——玩家与设计者，想象与逻辑，专注与闲暇。当一段旋律、一个场景或者一次恰到好处的挑战让你忘记时间，你便进入了那种古老的、属于玩耍的心流。
+            </div>
+
+            <p>
+                我们这代人恰好经历了游戏形态最剧烈的变迁。从单机到联机，从卡带到云存档，从手柄到触屏，媒介在变，但内核始终未改：<strong>游戏提供了一种安全又刺激的排练场</strong>，让我们能够尝试不同的策略、扮演另类的角色，并在反馈中不断调整自己。某种意义上，每一次点击或滑动，都是一次微小的自我更新。
+            </p>
+
+            <p>
+                而在众多选择中，找到一个气味相投的聚合地并不容易。平台的推荐算法往往追逐热度，却未必了解你真正偏爱哪一种节奏。有人偏爱沉浸式的叙事，有人痴迷于机制的精巧，也有人只想在十分钟的间隙里享受一次流畅的消遣。<strong>真正好的游戏入口，应该像一位熟悉你口味的伙伴</strong>，而不是嘈杂的市集。
+            </p>
+
+            <!-- 引用提示块 -->
+            <div class="insight">
+                <p>
+                    如果你也认同「游戏是一场主动的沉浸」，那么不妨在闲暇时去 <a href="https://indexofficial-igame.com">爱游戏</a> 这样的小角落看看——那里保持着对玩法与体验的诚实讨论，不喧哗，但总有新鲜的角度。
+                </p>
+            </div>
+
+            <!-- 双栏特点 -->
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🎯 发现而非推送</h3>
+                    <p>依照主题与玩法特质归类，你可以像翻阅杂志一样随性浏览，而不是被算法追着跑。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🧩 短评与札记</h3>
+                    <p>每款游戏都配有简练的体验笔记，不剧透核心乐趣，但足以帮你判断是否合拍。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🌱 跨平台视角</h3>
+                    <p>无论是PC、主机还是移动端，只关心作品本身的表达，不为硬件站队。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📖 轻量社区感</h3>
+                    <p>读者可以在文章下留下自己的感受，形成温和的讨论氛围，没有戾气和刷屏。</p>
+                </div>
+            </div>
+
+            <p>
+                大概两年前，我开始留意到 <a href="https://indexofficial-igame.com">爱游戏</a> 这个站点。它没有铺天盖地的广告，也没有急迫的更新提醒。页面干净，字里行间透着一种「我们好好聊聊游戏」的从容。编辑们选品的口味偏文艺与独立，偶尔也会推荐一些商业大作里容易被忽略的细节。渐渐地，它成了我每周必逛的几处网络自留地之一。
+            </p>
+
+            <p>
+                最近一次让我驻足的，是一篇关于解谜游戏《Viewfinder》的分析。作者没有罗列关卡难度，而是聊到了「视角」这个机制如何隐喻日常中的换位思考。我突然意识到，好的游戏评论从来不只是在评价游戏——它也在帮我们重新理解自己。<strong>游戏是一座座微缩的练习场</strong>，而好的平台则像一位耐心的向导，指给你看那些藏在角落的风景。
+            </p>
+
+            <!-- FAQ 摘要（折叠） -->
+            <div class="faq-mini">
+                <details>
+                    <summary>❓ 爱游戏上的内容适合哪些玩家？</summary>
+                    <p>无论你是硬核策略爱好者，还是只偶尔在睡前玩一会儿休闲游戏，这里都有对应的选题。大部分文章篇幅适中，不追求长篇大论，更注重洞察与感受。</p>
+                </details>
+                <details>
+                    <summary>❓ 是否需要注册或付费？</summary>
+                    <p>完全免费浏览，无需注册账号。部分文章下方可以自愿留言交流，但不需要任何积分或订阅。纯粹的内容分享。</p>
+                </details>
+                <details>
+                    <summary>❓ 如何获取新内容更新？</summary>
+                    <p>网站首页会按时间线陈列最新文章，你也可以通过RSS订阅（页面底部有链接）。没有邮件轰炸，一切保持安静。</p>
+                </details>
+            </div>
+
+            <!-- 访问句（自然嵌入） -->
+            <div class="visit-sentence">
+                如果你也想找一个可以静下心来了解游戏的地方，不妨记下 <a href="https://indexofficial-igame.com">爱游戏</a> ——它可能不会改变你的生活，但或许会让你在下一次打开游戏时，多一份会心的察觉。
+            </div>
+
+            <hr>
+            <p style="font-size: 0.9rem; color: #5c7387; margin-top: 0.2rem;">
+                写在后面：游戏是媒介，也是镜子。愿我们都能在虚拟的框架里，打捞到真实的愉悦。
+            </p>
+        </article>
+
+        <div class="footer-note">
+            · 温和探索 · 保持好奇 ·
+        </div>
+    </div>
+</body>
+</html>
